@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Pizzeria Fenicia Menu - Menu Digital",
+  "description": "Menu digital moderno e otimizado para dispositivos móveis com pedidos via WhatsApp.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

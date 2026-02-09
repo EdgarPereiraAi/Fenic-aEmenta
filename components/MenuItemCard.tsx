@@ -68,10 +68,13 @@ export const MenuItemCard: React.FC<Props> = ({
       url: `${window.location.origin}${window.location.pathname}#${item.id}`,
     };
 
-    if (navigator.share) {
-      try { await navigator.share(shareData); } catch (err) { console.error(err); }
+    // Use any cast to avoid TS issues with navigator.share and navigator.clipboard being potentially narrowed to never
+    const nav = navigator as any;
+
+    if ('share' in nav) {
+      try { await nav.share(shareData); } catch (err) { console.error(err); }
     } else {
-      try { await navigator.clipboard.writeText(shareData.url); alert('Link copiado!'); } catch (err) { console.error(err); }
+      try { await nav.clipboard.writeText(shareData.url); alert('Link copiado!'); } catch (err) { console.error(err); }
     }
   };
 

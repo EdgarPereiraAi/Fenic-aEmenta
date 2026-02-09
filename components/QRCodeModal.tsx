@@ -26,7 +26,7 @@ export const QRCodeModal: React.FC<Props> = ({ isOpen, onClose, lang }) => {
   };
 
   const handleShare = async () => {
-    if (navigator.share) {
+    if ('share' in navigator) {
       try {
         await navigator.share({
           title: `Pizzeria Fenicia Menu`,
@@ -76,7 +76,7 @@ export const QRCodeModal: React.FC<Props> = ({ isOpen, onClose, lang }) => {
               {copied ? t.linkCopied : t.copyLink}
             </button>
             
-            {navigator.share && (
+            {'share' in navigator && (
               <button 
                 onClick={handleShare}
                 className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-[#E74C3C] text-white font-black uppercase text-[10px] tracking-widest hover:bg-[#C0392B] transition-all shadow-lg shadow-[#E74C3C]/20"
